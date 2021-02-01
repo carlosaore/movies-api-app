@@ -1,18 +1,20 @@
 import { Switch, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import GlobalStyle from "./globalStyles";
 import Main from "./components/Main";
 import FavMovies from "./components/FavMovies";
 import Navbar from "./components/Navbar";
 
 function App() {
   const [data, setData] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState ([])
 
   function getMoviesInfo() {
     fetch("https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json")
     .then(response => response.json()).then(data => 
       setData({
         categories : data.genres,
-        movies : data.movies
+        movies : data.movies,
       })
     )
   };
@@ -20,21 +22,33 @@ function App() {
   useEffect (() => {
     getMoviesInfo()
   }, []);
+ 
 
   return (
     <div className="App">
+      <GlobalStyle />
       <Navbar />
       <Switch>
         <Route
           exact path="/"
           render={props => 
-            <Main {...props} {...data} />
+            <Main
+              data={data}
+              favoriteMovies={favoriteMovies}
+              setFavoriteMovies={setFavoriteMovies} 
+              {...props}
+            />
           }
         />
         <Route
-          path="/movie"
+          path="/favorites"
           render={props =>
-            <FavMovies {...props} />
+            <FavMovies
+              data={data}
+              favoriteMovies={favoriteMovies}
+              setFavoriteMovies={setFavoriteMovies}
+              {...props}
+            />
           }
         />
       </Switch>

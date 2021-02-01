@@ -1,19 +1,22 @@
-import styled from "styled-components";
+import AllMoviesDiv from "./atoms/AllMoviesDiv";
 import MovieCard from "./MovieCard";
 
-const AllMoviesDiv = styled.div`
-    display : flex;
-    flex-wrap : wrap;
-`
-
 const Main = props => (
-    <>
-        <p>Main components</p>
-        {props.categories !== undefined 
-            ? props.categories.map(cat => (<p>{cat}</p>))
-            : ""
+    <AllMoviesDiv {...props}>
+        { props.data.movies !== undefined
+            ? props.data.movies.map((movie) => (
+                <MovieCard
+                    {...movie}
+                    setFavoriteMovies={props.setFavoriteMovies}
+                    favoriteMovies={props.favoriteMovies}
+                    key={props.id}
+                    index={props.id}
+                    isFavorite={props.favoriteMovies.includes(movie.id)}
+                />
+            ))
+            : <p>...loading</p>
         }
-    </>
+    </AllMoviesDiv>
 );
 
 export default Main;
