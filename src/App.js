@@ -4,6 +4,7 @@ import GlobalStyle from "./globalStyles";
 import Main from "./components/Main";
 import FavMovies from "./components/FavMovies";
 import Navbar from "./components/Navbar";
+import RandomMovie from "./components/RandomMovie"
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <Navbar />
+      <Navbar/>
       <Switch>
         <Route
           exact path="/"
@@ -47,6 +48,14 @@ function App() {
               data={data}
               favoriteMovies={favoriteMovies}
               setFavoriteMovies={setFavoriteMovies}
+              {...props}
+            />
+          }
+        />
+        <Route
+          path="/random"
+          render={props =>
+            <RandomMovie
               {...props}
             />
           }

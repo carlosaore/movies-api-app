@@ -2,7 +2,7 @@
 > This is an app to practice using React hooks, API calls, React Router, and styled components.\
 It shows a list of movies fetched from an API and does a lot of things with the data.
 
-View demo
+[View demo](https://dreamy-knuth-149f0e.netlify.app/)
 
 ## What does the code do?
 ### Home page

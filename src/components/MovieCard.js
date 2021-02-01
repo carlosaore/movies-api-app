@@ -22,18 +22,19 @@ const MovieCard = props => (
         <Text>
             <small>{props.plot}</small>
         </Text>
-        <FavoriteButton
-            id={props.id}
-            onClick={(event) => props.isFavorite
-                ? props.setFavoriteMovies(props.favoriteMovies.filter(index => index !== Number(event.target.id)))
-                : props.setFavoriteMovies([...props.favoriteMovies, Number(event.target.id)])}
-        >
-            {props.isFavorite
-                ? "Remove from favorites"
-
-                : "Add to favorites"
-            }
-        </FavoriteButton>
+        {!props.location &&
+            <FavoriteButton
+                id={props.id}
+                onClick={(event) => props.isFavorite
+                    ? props.setFavoriteMovies(props.favoriteMovies.filter(index => index !== Number(event.target.id)))
+                    : props.setFavoriteMovies([...props.favoriteMovies, Number(event.target.id)].sort((a, b) => a-b))}
+            >
+                {props.isFavorite
+                    ? "Remove from favorites"
+                    : "Add to favorites"
+                }
+            </FavoriteButton>
+        }
     </StyledDiv>
 );
 
