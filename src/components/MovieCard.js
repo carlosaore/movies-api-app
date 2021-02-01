@@ -1,14 +1,9 @@
-import styled from "styled-components";
 import FavoriteButton from "./atoms/FavoriteButton";
-import MovieImg from "./atoms/MovieImg"
-import Text from "./atoms/Text"
+import MovieImg from "./atoms/MovieImg";
+import Text from "./atoms/Text";
+import StyledDiv from "./atoms/StyledDiv";
 
-const StyledDiv = styled.div`
-    display : flex;
-    flex-direction : column;
-    margin : 10px;
-    width : 250px;
-`
+
 
 const MovieCard = props => (
     <StyledDiv {...props}>

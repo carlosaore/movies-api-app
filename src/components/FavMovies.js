@@ -24,13 +24,13 @@ const FavMovies = props => {
         </RandomButton>
         <AllMoviesDiv {...props}>
             { props.data.movies !== undefined
-                ? props.data.movies.filter(movie => props.favoriteMovies.includes(movie.id)).map((movie) => (
+                ? props.data.movies.filter(movie => props.favoriteMovies.includes(movie.id)).map((movie, index) => (
                     <MovieCard
                         {...movie}
                         setFavoriteMovies={props.setFavoriteMovies}
                         favoriteMovies={props.favoriteMovies}
                         key={props.id}
-                        index={props.id}
+                        index={props.index}
                         isFavorite={props.favoriteMovies.includes(movie.id)}
                     />
                 ))

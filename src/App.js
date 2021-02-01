@@ -8,7 +8,8 @@ import RandomMovie from "./components/RandomMovie"
 
 function App() {
   const [data, setData] = useState([]);
-  const [favoriteMovies, setFavoriteMovies] = useState ([])
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("all")
 
   function getMoviesInfo() {
     fetch("https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json")
@@ -36,7 +37,9 @@ function App() {
             <Main
               data={data}
               favoriteMovies={favoriteMovies}
-              setFavoriteMovies={setFavoriteMovies} 
+              setFavoriteMovies={setFavoriteMovies}
+              categoryFilter={categoryFilter}
+              setCategoryFilter={setCategoryFilter}
               {...props}
             />
           }
